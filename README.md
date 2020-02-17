@@ -12,6 +12,6 @@ Please install them in the order listed above. Otherwise, ```pvporcupine``` will
 # Setup
 Inside your dedicated virtual environment, run ```python3 Learn.py``` to setup the tensorflow files and
 ```python
-python3 -c "import nltk ; nltk.download('punkt')
+python3 -c "import nltk ; nltk.download('punkt')"
 ``` 
 to set up nltk.
