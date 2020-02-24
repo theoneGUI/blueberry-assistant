@@ -15,3 +15,4 @@ Inside your dedicated virtual environment, run ```python3 Learn.py``` to setup t
 python3 -c "import nltk ; nltk.download('punkt')"
 ``` 
 to set up nltk.
+The AI part must be set up before the scripts can run successfully, so in the virtual environment or root directory of the scripts, run ```python3 Learn.py```. Blueberry is designed (currently) for support on Ubuntu/Raspberry Pi (works best on raspberry pi 4).
