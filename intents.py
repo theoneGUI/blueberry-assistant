@@ -10,7 +10,7 @@ soc = socket.socket()
 shost = socket.gethostname()
 ip = socket.gethostbyname(shost)
 #get information to connect with the server
-server_host = 'totc.ddns.net'
+server_host = '192.168.1.1'
 port = 1234
 #print('Trying to connect to the server: {}, ({})'.format(server_host, port))
 try:
