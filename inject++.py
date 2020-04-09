@@ -4,7 +4,7 @@ from tkinter import StringVar
 soc=socket.socket()
 shost=socket.gethostname()
 ip=socket.gethostbyname(shost)
-server_host='totc.ddns.net'
+server_host='192.168.1.1'
 port=1234
 def listener():
     quote=StringVar()
