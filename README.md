@@ -1,5 +1,8 @@
 # blueberry-assistant
 Multi-platform virtual assistant written entirely in python!
+
+This branch is written specifically for Raspberry Pi 4.
+
 Please create a virtual environment before installing any of these because dependencies can get messed up.
 
 There are several dependencies for this project:
