@@ -5,7 +5,6 @@ from win10toast import ToastNotifier
 n = ToastNotifier() 
   
 n.show_toast("Blueberry", "Preparing NExt satellite...", duration = 3) 
- #icon_path ="http://totc.ddns.net/images/t.png")
 import time, sys, understanding,os, threading
 import win32com.client as wincl
 def say(text):
@@ -16,7 +15,7 @@ import socket
 soc=socket.socket()
 shost=socket.gethostname()
 ip=socket.gethostbyname(shost)
-server_host='totc.ddns.net'
+server_host='192.168.1.1'
 port=1234
 dev_name="P1"
 try:
