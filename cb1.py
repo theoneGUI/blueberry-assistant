@@ -8,7 +8,7 @@ import tensorflow
 import random
 import json
 import pickle
-from common_ground import *
+
 with open("intents.json") as file:
     data = json.load(file)
 
@@ -113,16 +113,7 @@ def chat(inp):
             exec("import data; data.weatherNow(False)")
         elif tag=='sleepytime':
             exec("import data ; data.sleepChild()")
-        elif tag=='tyme':
-            exec("import data; data.currentTimeandDate()")
         elif tag=="learning":
-            say('Preparing to learn...')
-            resp='.lern'
-        elif tag=="restart":
-            say('Preparing to restart...')
-            resp='exitting. shutdown now'
-        if resp=='exitting. shutdown now' or resp=='.lern':
-            pass
-        else:
-            resp=random.choice(responses)
+            exec("import os, data, threading ; data.say('Learning...') ; threading.Thread(data.say('I will learn anything new now and restart myself.')) ; os.system('python Learn.py') ; os.system('python human_interface.py') ; exit()")
+        resp=random.choice(responses)
         return resp
