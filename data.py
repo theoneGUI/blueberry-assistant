@@ -1,4 +1,8 @@
-from common_ground import *
+import win32com.client as wincl
+def say(text):
+    speak = wincl.Dispatch("SAPI.SpVoice")
+    print(text)
+    speak.Speak(text)
 import random,urllib3
 from base64 import *
 from pyautogui import *
@@ -1622,25 +1626,28 @@ def sleepChild():
         hotkey('s')
 def joke():
     return random.choice(jokes)
-import speech_recognition as sr
-r = sr.Recognizer()
-mic = sr.Microphone()
-def listen():
-    try:
-        with mic as source:
-            audio = r.listen(source)
-            r.adjust_for_ambient_noise(source)
-        dialog=r.recognize_google(audio).lower()
-        return dialog
-    except sr.UnknownValueError:
-        pass
-def bg():
-    say("Say 'wake up' to bring me back up.")
-    while True:
-        if listen() == 'wake up':
-            break
-        else:
-            pass
+def weatherNow(offline):
+    if offline==True:
+        return "I am offline and cannot access weather data."
+    else:
+        ds=http.request("GET",'https://api.darksky.net/forecast/1bdb859538ecbcf26d45997da67be01f/40.5373,-89.3338').data
+        location=ds.find(b'"temperature":')
+        def actual(index):
+            actual=str(index.split(b'"')[30]).replace(':','').replace('b','').replace("'",'').replace(',','')
+            return actual
+        def feel(index):
+            feel=str(index.split(b'"')[32]).replace(':','').replace('b','').replace("'",'').replace(',','')
+            return feel
+        def humidity(index):
+            humid=str(index.split(b'"')[36]).replace(':','').replace('b','').replace("'",'').replace(',','').replace('0.','')+' percent'
+            return humid
+        def formulateReport(actual,feel,humidity):
+            report="Air temp is "+actual+" and it feels like "+feel+'. Humidity is at '+humidity
+            return report
+    report=formulateReport(actual(ds),feel(ds),humidity(ds))
+    say(report)
+    return report
+
 def learn():
     import os, threading
     threading.Thread(target=say("I'm learning now, give me a sec while I use my A I.")).start()
