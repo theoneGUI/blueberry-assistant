@@ -7,7 +7,7 @@ import tflearn
 import tensorflow
 import random
 import json
-import pickle
+import pickle, os
 
 with open("intents.json") as file:
     data = json.load(file)
@@ -86,4 +86,4 @@ def bag_of_words(s, words):
             
     return numpy.array(bag)
 
-exit()
+os.system('python3 test.py')

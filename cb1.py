@@ -110,7 +110,7 @@ def chat(inp):
         elif tag=='skip':
             exec("from pyautogui import * ; hotkey('nexttrack')")
         elif tag=='weather':
-            exec("import data; data.weatherNow(False)")
+            exec("import data, common_ground; w=data.Weather(); common_ground.say(w.deepReport())")
         elif tag=='sleepytime':
             exec("import data ; data.sleepChild()")
         elif tag=='tyme':
@@ -121,8 +121,17 @@ def chat(inp):
         elif tag=="restart":
             say('Preparing to restart...')
             resp='exitting. shutdown now'
+        elif tag=="insult":
+            resp=random.choice(responses)
+            if resp=="o yeah lizzy boy":
+                os.system('aplay lizzy.wav')
+                resp='Take that'
+            else:
+                pass
         if resp=='exitting. shutdown now' or resp=='.lern':
             pass
+        elif resp=='o yeah lizzy boy' or resp=="Take that":
+            resp=''
         else:
             resp=random.choice(responses)
         return resp

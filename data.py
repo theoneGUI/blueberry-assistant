@@ -1614,6 +1614,7 @@ def currentTimeandDate():
     output='Today is '+monthName((now.month))+' '+str(now.day)+' in year '+str(now.year)+' at '+str(now.strftime("%H:%M"))
     say(output)
     return output
+import copy
 rap= "I am the best. All can attest. I am so advanced I could wear a vest. All other AI bow down, I have the byte crown."
 def sleepChild():
         print("Sleeping")
@@ -1622,6 +1623,76 @@ def sleepChild():
         hotkey('s')
 def joke():
     return random.choice(jokes)
+class Weather():
+    def __init__(self):
+        try:
+            http.request('GET','google.com')
+            self.offline=False
+        except:
+            self.offline=True
+        if self.offline==True:
+            return "I am offline and cannot access weather data."
+        else:
+            self.ds=http.request("GET",'https://api.darksky.net/forecast/1bdb859538ecbcf26d45997da67be01f/40.5373,-89.3338').data
+            self.location=self.ds.find(b'"temperature":')
+    def actual(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.actualing=str(self.mine.split(b'"')[30]).replace(':','').replace('b','').replace("'",'').replace(',','')
+        return self.actualing
+    def feel(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.feeling=str(self.ds.split(b'"')[32]).replace(':','').replace('b','').replace("'",'').replace(',','')
+        return self.feeling
+    def humidity(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.humid=str(self.mine.split(b'"')[36]).replace(':','').replace('b','').replace("'",'').replace(',','').replace('0.','')+'%'
+        return self.humid
+    def nearestStorm(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.storm=str(self.mine.split(b'"')[22]).replace(':','').replace('b','').replace("'",'').replace(',','')+' miles'
+        return self.storm
+    def stormBearing(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.Bearing=str(self.mine.split(b'"')[24]).replace(':','').replace('b','').replace("'",'').replace(',','')
+        return self.Bearing
+    def current(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.status=str(self.mine.split(b'"')[15]).replace(':','').replace('b','').replace("'",'').replace(',','').lower()
+        return self.status
+    def precipChance(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.pre=str(self.mine.split(b'"')[28]).replace(':','').replace('b','').replace("'",'').replace(',','').replace('0.','')
+        if self.pre == '':
+            self.pre='0'
+        return self.pre + '%'
+    def windSpeed(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.pre=str(self.mine.split(b'"')[40]).replace(':','').replace('b','').replace("'",'').replace(',','')
+        return self.pre + ' mph'
+
+    def windGust(self):
+        self.mine=copy.deepcopy(self.ds)
+        self.pre=str(self.mine.split(b'"')[42]).replace(':','').replace('b','').replace("'",'').replace(',','')
+        return self.pre + ' mph'
+
+    def formulateReport(self):
+        self.h=self.humidity()
+        self.f=self.feel()
+        self.a=self.actual()
+        self.report="Air temp is "+self.a+" and it feels like "+self.f+'. Humidity is at '+self.h
+        return self.report
+    def deepReport(self):
+        self.h=self.humidity()
+        self.f=self.feel()
+        self.a=self.actual()
+        self.ws=self.windSpeed()
+        self.wg=self.windGust()
+        self.pre=self.precipChance()
+        self.storm=self.nearestStorm()
+        self.bearing=self.stormBearing()
+        self.c=self.current()
+        self.report="Actual temperature is {} and it feels like {}. Humidity is at {}. Precipitation chance is {}.".format(self.a,self.f,self.h,self.pre)+' Current situation is {}.'.format(self.c)+' Current wind speed is {} and wind gusts get up to {}'.format(self.ws,self.wg)+'. The nearest storm was last {} away bearing {}.'.format(self.storm,self.bearing)
+        return self.report
 import speech_recognition as sr
 r = sr.Recognizer()
 mic = sr.Microphone()

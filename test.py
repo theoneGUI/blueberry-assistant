@@ -2,9 +2,7 @@ from common_ground import *
 from threading import Thread
 def begin():
     os.system('aplay computerbeep_75.wav')
-    say('''Hello and welcome to the blueberry assistant. I am starting
-up now and before we begin, I would like to say that if you ever need me,
-just say blueberry and I will start listening for any commands I may execute.''')
+    say('''Blueberry is starting up''')
 Thread(target=begin).start()
 from pvporcupine import Porcupine
 from datetime import datetime
@@ -29,15 +27,15 @@ audio_stream = pa.open(
     input=True,
     frames_per_buffer=handle.frame_length)
 def naf():
-    pcm = audio_stream.read(handle.frame_length)
+    pcm = audio_stream.read(handle.frame_length, exception_on_overflow=False)
     pcm = struct.unpack_from("h" * handle.frame_length, pcm)
     return pcm
-try:
-    while True:
-        pcm=naf()
-        keyword_index=handle.process(pcm)
-        if keyword_index >= 0:
-            understanding.listen()
-
-finally:
-    handle.delete()
+say('ready')
+#try:
+while True:
+    pcm=naf()
+    keyword_index=handle.process(pcm)
+    if keyword_index >= 0:
+        understanding.listen()
+#finally:
+#    handle.delete()

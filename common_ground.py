@@ -1,4 +1,5 @@
 import os
 def say(text):
     print(text)
-    os.system('espeak "{}" -a 300 -v english-us -s 125 2>/dev/null'.format(text))
+    os.system('espeak "{}" -v english-us -a 80 -s 125 --stdout > file.wav'.format(text))
+    os.system('aplay file.wav')

@@ -8,7 +8,7 @@
         "hey",
 	"whats up"
       ],
-      "responses": [ "Hello!", "Good to see you again!", "Hi there, I'm Dan, your AI companion!" ],
+      "responses": [ "Hello!", "Good to see you again!", "Welcome to Blueberry" ],
       "context_set": ""
     },
     {
@@ -66,6 +66,12 @@
       "context_set": ""
     },
     {
+      "tag": "weather",
+      "patterns": [ "how is the weather", "whats it like outside", "how hot is it", "how cold is it", "whats it like", "what is the temperature" ],
+      "responses": [ "Now go outside and experience it.", "How do you like that?", "I dislike weather with a passion." ],
+      "context_set": ""
+    },
+    {
       "tag": "rap",
       "patterns": [ "rap now", "rap", "i want you to do a rap" ],
       "responses": [ "I am the best. All can attest. I am so advanced I could wear a vest. All other AI bow down, I have the byte crown." ],
@@ -80,7 +86,7 @@
     {
       "tag": "insult",
       "patterns": [ "i hate you", "youre stupid", "dummy", "you suck", "you are sucky", "shut up" ],
-      "responses": [ "Be sure to have an nice day (and watch your back).", "Look out for falling objects.", "Likewise I'm sure...", "I have more nuerons than your stupid head" ],
+      "responses": [ "Be sure to have an nice day (and watch your back).", "Look out for falling objects.", "Likewise I'm sure...", "I have more nuerons than your stupid head", "o yeah lizzy boy" ],
       "context_set": ""
     },
     {
@@ -90,14 +96,8 @@
       "context_set": ""
     },
     {
-      "tag": "generalweather",
-      "patterns": [ "its a good day", "it is a great day today", "nice day isnt it" ],
-      "responses": [ "It surely is.", "No better than yesterday.", "Perpetually nice." ],
-      "context_set": ""
-    },
-    {
       "tag": "learning",
-      "patterns": [ "i updated you, so you need to learn", "go to school", "start learning", "use that big brain of yours", "i don't like the way you're walking" ],
+      "patterns": [ "i updated you, so you need to learn", "go to school", "start learning", "use that big brain of yours", "i don't like the way you're walking", "refresh a i" ],
       "responses": [ "Learning. Just give me a minute please." ],
       "context_set": ""
     },

@@ -13,7 +13,6 @@ def listen():
         dialog=r.recognize_google(audio).lower()
         print(dialog)
         resp=intents.process(dialog)
-        os.system('aplay computerbeep_75.wav > /dev/null')
         say(resp)
         if resp == 'exitting...':
             exit()
@@ -22,5 +21,3 @@ def listen():
         say("")
 r = sr.Recognizer()
 mic = sr.Microphone()
-
-listen()
