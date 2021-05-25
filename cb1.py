@@ -8,6 +8,12 @@ import tensorflow
 import random
 import json
 import pickle
+from nmb.NetBIOS import NetBIOS
+def queryNam(name):
+    n = NetBIOS(broadcast=True, listen_port=0)
+    ip = n.queryName(name, timeout=30)
+    return ip
+voice=1
 from common_ground import *
 with open("intents.json") as file:
     data = json.load(file)
@@ -109,6 +115,8 @@ def chat(inp):
             exec("import data ; data.knowledge(inp,False)")
         elif tag=='skip':
             exec("from pyautogui import * ; hotkey('nexttrack')")
+        elif tag=='.again}':
+            resp=".again}"
         elif tag=='weather':
             exec("import data, common_ground; w=data.Weather(); common_ground.say(w.deepReport())")
         elif tag=='sleepytime':
@@ -126,12 +134,31 @@ def chat(inp):
             if resp=="o yeah lizzy boy":
                 os.system('aplay lizzy.wav')
                 resp='Take that'
-            else:
-                pass
+            if resp=="i am wounded":
+                os.system('aplay wounded.wav')
+                resp='Take that'
+        elif tag=="lightning":
+            say('shutting everything down, including myself.')
+            name = "DESKTOP-06LFRGT"
+            ip = queryNam(name)
+            for i in ip:
+                if "192.168.1." in i:
+                    ip = i
+                    break
+            os.system('net rpc -S {} -U Aidan%maggie59 shutdown -t 10 -c "Lightning alert from blueberry." -f'.format(ip))
+            say("shut down pc...")
+            os.system('ssh -t pi@192.168.1.11 "sudo shutdown now"')
+            say("shut down pi bridge")
+            say("shut down self")
+            os.system('sudo shutdown now')
+
+            resp="uh oh, I wasn't supposed to get this far."
         if resp=='exitting. shutdown now' or resp=='.lern':
             pass
         elif resp=='o yeah lizzy boy' or resp=="Take that":
-            resp=''
+            resp=' '
+        elif resp=='.again}':
+            pass
         else:
             resp=random.choice(responses)
         return resp

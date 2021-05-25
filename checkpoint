@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/pi/updateAssistant/model.tflearn"
+all_model_checkpoint_paths: "/home/pi/updateAssistant/model.tflearn"

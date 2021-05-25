@@ -1,0 +1,1 @@
+tflearn speechRecognition tensorflow wolframalpha pyautogui pvporcupine pyaudio soundfile numpy urllib3

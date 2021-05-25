@@ -72,21 +72,15 @@
       "context_set": ""
     },
     {
-      "tag": "rap",
-      "patterns": [ "rap now", "rap", "i want you to do a rap" ],
-      "responses": [ "I am the best. All can attest. I am so advanced I could wear a vest. All other AI bow down, I have the byte crown." ],
-      "context_set": ""
-    },
-    {
       "tag": "compliment",
-      "patterns": [ "nice code", "i like you", "you are nice", "you are good", "you are cool" ],
+      "patterns": [ "nice code", "i like you", "you are nice", "good", "you are cool" ],
       "responses": [ "Thank you.", "I appreciate that.", "Right back at you." ],
       "context_set": ""
     },
     {
       "tag": "insult",
-      "patterns": [ "i hate you", "youre stupid", "dummy", "you suck", "you are sucky", "shut up" ],
-      "responses": [ "Be sure to have an nice day (and watch your back).", "Look out for falling objects.", "Likewise I'm sure...", "I have more nuerons than your stupid head", "o yeah lizzy boy" ],
+      "patterns": [ "i hate you", "you're stupid", "dummy", "you suck", "you are sucky", "shut up" ],
+      "responses": [ "Be sure to have an nice day (and watch your back).", "i am wounded","Look out for falling objects.", "Likewise I'm sure...", "I have more nuerons than your stupid head", "o yeah lizzy boy" ],
       "context_set": ""
     },
     {
@@ -141,6 +135,18 @@
       "tag": "restart",
       "patterns": [ "restart yourself", "reboot assistant" ],
       "responses": [ "Prepraring to restart Blueberry..." ],
+      "context_set": ""
+    },
+    {
+      "tag": ".again}",
+      "patterns": [ "do that again","say that one more time","execute that once more", "repeat that action" ],
+      "responses": [ "" ],
+      "context_set": ""
+    },
+    {
+      "tag": "lightning",
+      "patterns": [ "lightning alert", "electrical storm approaching" ],
+      "responses": [ "" ],
       "context_set": ""
     }
   ]

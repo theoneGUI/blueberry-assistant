@@ -13,11 +13,17 @@ def listen():
         dialog=r.recognize_google(audio).lower()
         print(dialog)
         resp=intents.process(dialog)
-        say(resp)
+        if resp=='.again}':
+            pass
+        else:
+            say(resp)
         if resp == 'exitting...':
             exit()
         return dialog
     except sr.UnknownValueError:
-        say("")
+        pass
+def passthrough(IN):
+    resp=intents.process(IN)
+    return resp
 r = sr.Recognizer()
 mic = sr.Microphone()

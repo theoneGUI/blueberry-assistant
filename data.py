@@ -6,16 +6,19 @@ def keystroke(keys,sec):
     time.sleep(sec)
     typewrite(keys)
 http=urllib3.PoolManager()
+voice = 1
 verbs=[
-    'reading',
-    'understanding',
+    'read',
+    'understand',
     'love',
     'video',
+    'take'
 ]
 adjectives=[
     'two',
     'quality',
     'weak',
+    'strong'
 ]
 nouns = [
     'people',
@@ -1691,7 +1694,7 @@ class Weather():
         self.storm=self.nearestStorm()
         self.bearing=self.stormBearing()
         self.c=self.current()
-        self.report="Actual temperature is {} and it feels like {}. Humidity is at {}. Precipitation chance is {}.".format(self.a,self.f,self.h,self.pre)+' Current situation is {}.'.format(self.c)+' Current wind speed is {} and wind gusts get up to {}'.format(self.ws,self.wg)+'. The nearest storm was last {} away bearing {}.'.format(self.storm,self.bearing)
+        self.report="Actual temperature is {} and it feels like {}. Humidity is at {}. Precipitation chance is {}.".format(self.a,self.f,self.h,self.pre)+' Current situation is {} skies.'.format(self.c)+' Current wind speed is {} and wind gusts get up to {}'.format(self.ws,self.wg)+'. The nearest storm was last {} away bearing {}.'.format(self.storm,self.bearing)
         return self.report
 import speech_recognition as sr
 r = sr.Recognizer()

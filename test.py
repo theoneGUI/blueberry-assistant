@@ -1,3 +1,6 @@
+import random
+global voice
+voice=random.randint(1,3)
 from common_ground import *
 from threading import Thread
 def begin():
@@ -13,12 +16,7 @@ import pvporcupine
 def words(IN):
     res = re.findall(r'\w+', IN) 
     return res
-handle = pvporcupine.create(keywords=['blueberry', 'bumblebee'])
-#library_path = ... # Path to Porcupine's C library available under lib/${SYSTEM}/${MACHINE}/
-#model_file_path = . # It is available at lib/common/porcupine_params.pv
-#keyword_file_paths = ['path/to/keyword/1', 'path/to/keyword/2', ...]
-#sensitivities = [0.5, 0.4, ...]
-#handle = Porcupine(library_path, model_file_path, keyword_file_paths=keyword_file_paths, sensitivities=sensitivities)
+handle = pvporcupine.create(keywords=['blueberry', 'hey google'])
 pa = pyaudio.PyAudio()
 audio_stream = pa.open(
     rate=handle.sample_rate,
@@ -31,11 +29,21 @@ def naf():
     pcm = struct.unpack_from("h" * handle.frame_length, pcm)
     return pcm
 say('ready')
+x=[]
 #try:
 while True:
     pcm=naf()
     keyword_index=handle.process(pcm)
     if keyword_index >= 0:
-        understanding.listen()
+        a=understanding.listen()
+        if a == '.again}' or a == 'do that again':
+            last=x[len(x)-int(1)]
+            print(last)
+            understanding.passthrough(last)
+        else:
+            x.append(a)
+    if len(x) > 100:
+        del x
+        x=[]
 #finally:
 #    handle.delete()
